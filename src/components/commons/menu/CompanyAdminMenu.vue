@@ -44,7 +44,7 @@ async function logOut() {
     await router.push('/login')
     return
   }
-  toast('Sikertelen kijelentkezés', ToastConfigs.errorToastConfig)
+  toast(t('toastMessages.logOutFail'), ToastConfigs.errorToastConfig)
 }
 
 function getNavClass(navPath: string): string {

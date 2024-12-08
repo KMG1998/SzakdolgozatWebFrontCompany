@@ -13,24 +13,8 @@
         />
       </div>
       <div
-        class="flex flex-col items-stretch"
-        @click="selectedPage = modalPages.companyPage"
-        v-if="shouldShowMenu"
-      >
-        <div
-          class="flex grow flex-col items-center"
-        >
-          <img
-            loading="lazy"
-            src="@/assets/images/company_button.png"
-            class="rounded-full border-2 border-black drop-shadow-md w-[70px] fill-white self-center cursor-pointer"
-          />
-        </div>
-      </div>
-      <div
         class="flex flex-col items-stretch max-md:w-full max-md:ml-0"
         @click="selectedPage = modalPages.vehiclePage"
-        v-if="[3,4].includes(selectedUserStore.selectedUser.typeId)"
       >
         <img
           loading="lazy"
@@ -41,7 +25,6 @@
     </div>
     <UserDetailsUserPage v-if="selectedPage === modalPages.userPage"/>
     <UserDetailsVehiclePage v-if="selectedPage === modalPages.vehiclePage"/>
-    <UserDetailsCompanyPage v-if="selectedPage === modalPages.companyPage"/>
   </div>
   <div v-else class="fixed flex items-center bg-white rounded-full p-2 justify-center opacity-100 z-50">
     <semipolar-spinner
@@ -64,13 +47,12 @@ import {SemipolarSpinner} from 'epic-spinners'
 enum modalPages {
   userPage = 1,
   vehiclePage = 2,
-  companyPage = 3
 }
 
 
 let selectedPage = ref(modalPages.userPage)
 const selectedUserStore = useSelectedUserStore()
-const shouldShowMenu = [1,2,3,4].includes(selectedUserStore.selectedUser.typeId)
+const shouldShowMenu = selectedUserStore.selectedUser.typeId === 4
   &&!selectedUserStore.deleteStarted && !selectedUserStore.editStarted
 
 onBeforeMount(() => {
@@ -78,11 +60,8 @@ onBeforeMount(() => {
 })
 
 async function getAdditionalData() {
-  if([3,4].includes(selectedUserStore.selectedUser.typeId)){
+  if(selectedUserStore.selectedUser.typeId === 4){
     selectedUserStore.userVehicle = await VehicleService.findVehicleByDriver(selectedUserStore.selectedUser.id)
-  }
-  if (shouldShowMenu) {
-    selectedUserStore.userCompany = await CompanyService.getCompanyByWorker(selectedUserStore.selectedUser.id)
   }
 }
 </script>

@@ -46,16 +46,6 @@
                 :error="errors.color"
                 :readonly = false
               />
-              <InputField
-                field-id="companyId"
-                label="Cég azonosító"
-                type="text"
-                v-model="companyId"
-                v-bind=companyIdProps
-                :meta="meta"
-                :error="errors.companyId"
-                :readonly = false
-              />
             </div>
             <div class="flex grow flex-col items-stretch mt-9 max-md:pl-5">
               <DateSelector
@@ -141,7 +131,6 @@ const schema = toTypedSchema(object({
   plateNum: Validators.minLength(6),
   carType: Validators.minLength(3),
   color: Validators.minLength(3),
-  companyId: Validators.exactLength(36),
   insuranceValidUntil: Validators.dateRequired(),
   insuranceIssuer: Validators.minLength(3),
   insuranceNumber: Validators.minLength(3),
@@ -153,7 +142,6 @@ const [seats, seatsProps] = defineField('seats')
 const [plateNum, plateNumProps] = defineField('plateNum')
 const [carType, carTypeProps] = defineField('carType')
 const [color, colorProps] = defineField('color')
-const [companyId, companyIdProps] = defineField('companyId')
 const [insuranceValidUntil, insuranceValidUntilProps] = defineField('insuranceValidUntil')
 const [insuranceIssuer, insuranceIssuerProps] = defineField('insuranceIssuer')
 const [insuranceNumber, insuranceNumberProps] = defineField('insuranceNumber')
@@ -163,7 +151,7 @@ const createInProgress = ref<boolean>(false)
 async function createVehicle() {
   if (meta.value.valid) {
     createInProgress.value = true
-    const newVehicle = await VehicleService.createVehicle(companyId.value,seats.value, plateNum.value, carType.value, color.value,
+    const newVehicle = await VehicleService.createVehicle(seats.value, plateNum.value, carType.value, color.value,
       insuranceValidUntil.value,insuranceIssuer.value,insuranceNumber.value,registrationValidUntil.value);
     createInProgress.value = false
     if (newVehicle !== undefined) {

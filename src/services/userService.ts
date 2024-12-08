@@ -4,10 +4,11 @@ import {toast} from 'vue3-toastify';
 import ToastConfigs from "@/utils/toastConfigs";
 import {useCookies} from "vue3-cookies";
 import * as Vehicle from "@/types/Vehicle";
+import * as Company from "@/types/Company";
 
 const API_URL = 'http://localhost:8085/user/';
 const axiosClient = axios.create({withCredentials: true})
-const { cookies } = useCookies();
+const {cookies} = useCookies();
 
 class UserService {
   constructor() {
@@ -30,7 +31,8 @@ class UserService {
     }).then(response => {
       console.log(response)
       if (response.status === 200 && response.data) {
-        sessionStorage.setItem('userData', JSON.stringify(response.data as User))
+        sessionStorage.setItem('userData', JSON.stringify(response.data['userData'] as User))
+        sessionStorage.setItem('companyData', JSON.stringify(response.data['companyData'] as Company))
         success = true;
       }
       if (response.status === 400) {
@@ -66,14 +68,14 @@ class UserService {
     return newUserId
   }
 
-  async getAllUsers() {
+  async getCompanyUsers() {
     try {
       const response = await axiosClient
-        .get(API_URL + 'allUsers');
+        .get(API_URL + 'getAllByCompany');
       if (response.data) {
         const users = Array<User>();
-        response.data.map(function (value: User) {
-          users.push(value as User)
+        response.data.map(function (value) {
+          users.push(value['worker'] as User)
         });
         return users;
       }
@@ -151,11 +153,11 @@ class UserService {
     }
   }
 
-  async getOwnData():Promise<void>{
+  async getOwnData(): Promise<void> {
     const resp = await axiosClient.get(API_URL + 'getOwnData')
-    if(resp.data){
+    if (resp.data) {
       const data = resp.data as User
-      if(data.typeId != 2){
+      if (data.typeId != 2) {
         cookies.remove('authenticated')
         cookies.remove('token')
         return
@@ -168,7 +170,7 @@ class UserService {
     try {
       console.log("in checktoken")
       const resp = await axiosClient.post(API_URL + 'checkToken')
-      if(resp.status === 200 && sessionStorage.getItem('userData') == null){
+      if (resp.status === 200 && sessionStorage.getItem('userData') == null) {
         await this.getOwnData();
       }
       return resp.status === 200
@@ -177,17 +179,26 @@ class UserService {
     }
   }
 
-  async findByVehicle(vehicleId:string){
+  async findByVehicle(vehicleId: string) {
     try {
-      const resp = await axiosClient.post(API_URL + 'findByVehicle',{vehicleId:vehicleId})
+      const resp = await axiosClient.post(API_URL + 'findByVehicle', {vehicleId: vehicleId})
       console.log(resp.data)
-      if(resp.status === 200 && resp.data){
+      if (resp.status === 200 && resp.data) {
         console.log()
         return resp.data as Vehicle;
       }
       return undefined
     } catch (e) {
       return undefined
+    }
+  }
+
+  async changePass(currentPass: string, newPass: string) {
+    try{
+      const resp = await axiosClient.post(API_URL + 'changePassword', {currentPass: currentPass, newPass: newPass})
+      return resp.status === 200
+    }catch (e){
+      return false
     }
   }
 

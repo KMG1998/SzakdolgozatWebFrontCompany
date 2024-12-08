@@ -120,11 +120,8 @@ const [email, emailProps] = defineField('email')
 const [nameOfUser, nameOfUserProps] = defineField('nameOfUser',)
 const [userType, userTypeProps] = defineField('userType',)
 const selectorElements = [
-  {value:1,label:'Rendszer adminisztrátor'},
   {value:2,label:'Céges adminisztrátor'},
-  {value:3,label:'Magán sofőr'},
   {value:4,label:'Céges sofőr'},
-  {value:5,label:'Utas'},
 ]
 email.value = userDataStore.selectedUser.email
 nameOfUser.value = userDataStore.selectedUser.name
@@ -159,7 +156,7 @@ async function deleteUser() {
     userDataStore.$reset()
     return
   }
-  deleteStarted.value = false;
+  userDataStore.deleteStarted = false;
   toast(t('toastMessages.deleteFail'), ToastConfigs.errorToastConfig)
 }
 

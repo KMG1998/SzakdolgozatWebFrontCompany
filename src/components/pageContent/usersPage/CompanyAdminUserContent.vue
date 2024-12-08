@@ -37,7 +37,7 @@ const selectedUserStore = useSelectedUserStore()
 
 
 async function getUsers() {
-  usersData.value = await UserService.getAllUsers();
+  usersData.value = await UserService.getCompanyUsers();
 }
 
 function toggleDetailsPopUp(selectedUser) {

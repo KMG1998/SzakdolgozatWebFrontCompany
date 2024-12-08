@@ -94,9 +94,7 @@ const [userType, userTypeProps] = defineField('userType',)
 userType.value = 0;
 const selectorElements = [
   {value:0,label:'Kérjük, válasszon értéket!'},
-  {value:1,label:'Rendszer adminisztrátor'},
   {value:2,label:'Céges adminisztrátor'},
-  {value:3,label:'Magán sofőr'},
   {value:4,label:'Céges sofőr'},
 ]
 const createInProgress = ref<boolean>(false)

@@ -21,12 +21,11 @@ class VehicleService {
     })
   }
 
-  createVehicle(companyId:string,seats: number, plateNum: string, carType: string, color: string,
+  createVehicle(seats: number, plateNum: string, carType: string, color: string,
                 insuranceValidUntil: string, insuranceIssuer: string, insuranceNumber: string, registrationValidUntil: string
   ): Promise<Vehicle | void> {
     return axiosClient
       .post(API_URL + 'create', {
-        companyId:companyId,
         seats: seats,
         plateNumber: plateNum,
         type: carType,
@@ -66,7 +65,7 @@ class VehicleService {
 
   async getAllVehicles(): Promise<Vehicle[] | undefined> {
     let allVehicles = undefined
-    await axiosClient.get(API_URL + 'allVehicles',)
+    await axiosClient.get(API_URL + 'vehiclesForCompany',)
       .then(response => {
         if (response.data) {
           const vehicles = Array<Vehicle>();
@@ -102,7 +101,7 @@ class VehicleService {
 
   async findNonUserLinkedVehicles(): Promise<Vehicle[] | undefined> {
     let vehicles = undefined
-    await axiosClient.post(API_URL + 'nonUserLinked',).then((response) => {
+    await axiosClient.post(API_URL + 'nonLinkedForCompany',).then((response) => {
         if (response.data) {
           vehicles = response.data.map((value) => value['vehicle'] as Vehicle)
         }
@@ -136,8 +135,15 @@ class VehicleService {
                       insuranceValidUntil: string, insuranceIssuer: string, insuranceNumber: string, registrationValidUntil: string) {
     let result = undefined
     const resp = await axiosClient.post(API_URL + 'update', {
-      insuranceId: insuranceId, vehicleId: vehicleId, seats: seats, plateNumber: plateNum, type: carType,
-      color: color, insuranceValidUntil: insuranceValidUntil, insuranceIssuer: insuranceIssuer, insuranceNumber: insuranceNumber,
+      insuranceId: insuranceId,
+      vehicleId: vehicleId,
+      seats: seats,
+      plateNumber: plateNum,
+      type: carType,
+      color: color,
+      insuranceValidUntil: insuranceValidUntil,
+      insuranceIssuer: insuranceIssuer,
+      insuranceNumber: insuranceNumber,
       registrationValidUntil: registrationValidUntil
     })
     if (resp.data) {
@@ -146,13 +152,13 @@ class VehicleService {
     return result;
   }
 
-  async deleteVehicle(vehicleId){
+  async deleteVehicle(vehicleId) {
     try {
       const resp = await axiosClient.post(API_URL + 'delete', {
         vehicleId: vehicleId
       });
       return resp.status === 200
-    }catch (e){
+    } catch (e) {
       return false
     }
   }

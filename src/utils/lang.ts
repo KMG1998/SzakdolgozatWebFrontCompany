@@ -9,7 +9,9 @@ const i18n = createI18n({
       true:'Igen',
       false:'Nem',
       mainPage: {
-        quickActions: 'gyorsműveletek'
+        quickActions: 'gyorsműveletek',
+        companyData: 'cég adatai',
+        ownData:'Személyes adatok'
       },
       sideMenu: {
         usersPage: 'Felhasználók',
@@ -61,7 +63,8 @@ const i18n = createI18n({
         linkFail:'Sikertelen összekötés',
         unlinkSuccess:'Sikeres leválasztás',
         unlinkFail:'Sikertelen leválasztás',
-        pleaseLogIn:'Kérjük,jelentkezzen be'
+        pleaseLogIn:'Kérjük,jelentkezzen be',
+        logOutFail:'Sikertelen kijelentkezés'
       },
       inputValidation:{
         requiredField:'Kötelező mező',
@@ -70,7 +73,8 @@ const i18n = createI18n({
         minValue:'A minimum érték {minValue}',
         exactLength:'Az értéknek pontosan {length} karakter hosszúnak kell lennie',
         phoneFormat:'A megfelelő formátum: +xx xx xxx xxxx',
-        minDate:'A dátumnak a mai napon vagy később kell lennie'
+        minDate:'A dátumnak a mai napon után kell lennie',
+        passwordMismatch:'Az új jelszó és az ismétlés nem egyezik!'
       }
     },
   }
