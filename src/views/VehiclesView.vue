@@ -10,7 +10,3 @@
 import CompanyAdminMenu from "@/components/commons/menu/CompanyAdminMenu.vue";
 import CompanyAdminVehiclesContent from "@/components/pageContent/vehiclesPage/CompanyAdminVehiclesContent.vue";
 </script>
-
-<style scoped>
-
-</style>

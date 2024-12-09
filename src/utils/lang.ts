@@ -51,6 +51,13 @@ const i18n = createI18n({
           finishDateTime:'Lezárás időpontja',
           destinationAddress:'Úticél'
         },
+        reviewTable:{
+          id: 'Azonosító',
+          reviewer: 'értékelő ID',
+          score:'pontszám',
+          reviewText:'szöveg',
+          createdAt:'létrehozás időpontja'
+        }
       },
       toastMessages: {
         createSuccess: 'Sikeres létrehozás',
@@ -64,7 +71,9 @@ const i18n = createI18n({
         unlinkSuccess:'Sikeres leválasztás',
         unlinkFail:'Sikertelen leválasztás',
         pleaseLogIn:'Kérjük,jelentkezzen be',
-        logOutFail:'Sikertelen kijelentkezés'
+        logOutFail:'Sikertelen kijelentkezés',
+        passwordResetSuccess:'Sikeres kérvényezés',
+        passwordResetFail:'Sikertelen kérvényezés'
       },
       inputValidation:{
         requiredField:'Kötelező mező',

@@ -11,6 +11,3 @@ import CompanyAdminMenu from "@/components/commons/menu/CompanyAdminMenu.vue";
 import CompanyAdminUsersContent from "@/components/pageContent/usersPage/CompanyAdminUserContent.vue";
 </script>
 
-<style scoped>
-
-</style>

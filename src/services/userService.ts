@@ -202,6 +202,15 @@ class UserService {
     }
   }
 
+  async resetPass(email) {
+    try{
+      const resp = await axiosClient.post(API_URL + 'resetPassword', {userEmail:email})
+      return resp.status === 200
+    }catch (e){
+      return false
+    }
+  }
+
 }
 
 export default new UserService()

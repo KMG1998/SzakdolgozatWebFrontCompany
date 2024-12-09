@@ -3,7 +3,7 @@
     <VehicleDetailsPopUp/>
   </PopUp>
   <div
-    class="flex flex-col grow shrink-0 mt-6 whitespace-nowrap basis-0 w-fit max-md:max-w-full"
+    class="flex flex-col grow shrink-0 mt-6 basis-0 w-fit max-md:max-w-full"
   >
     <div class="flex flex-col ml-6 max-w-full w-[100px] max-md:ml-2.5">
       <img

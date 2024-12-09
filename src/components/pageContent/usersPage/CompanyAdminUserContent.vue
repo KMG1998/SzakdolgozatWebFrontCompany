@@ -3,7 +3,7 @@
     <UserDetailsPopUp/>
   </PopUp>
   <div
-    class="flex flex-col grow shrink-0 mt-6 whitespace-nowrap basis-0 w-fit max-md:max-w-full"
+    class="flex flex-col grow shrink-0 mt-6 basis-0 w-fit max-md:max-w-full"
   >
     <div class="flex flex-col ml-6 max-w-full w-[100px] max-md:ml-2.5">
       <img
@@ -18,6 +18,7 @@
       <div class="max-md:max-w-full text-left">Felhasználók</div>
       <div>
         <DataTable :table-data="usersData" header-class="userTable" :on-details-click="toggleDetailsPopUp"
+                   :field-transformers="fieldTransformers"
                    button-img-file-name="details_eye.png"/>
       </div>
     </div>
@@ -31,10 +32,14 @@ import UserDetailsPopUp from "@/components/popup/userDetailsPopUp/UserDetailsPop
 import DataTable from "@/components/commons/DataTable.vue";
 import {useSelectedUserStore} from "@/stores/selectedUser.ts";
 import {onBeforeMount, ref} from "vue";
+import {convertUserType} from "@/utils/valueConverter";
 
 const usersData = ref(undefined)
 const selectedUserStore = useSelectedUserStore()
 
+const fieldTransformers = {
+  'typeId': (typeId) => convertUserType(typeId)
+}
 
 async function getUsers() {
   usersData.value = await UserService.getCompanyUsers();
@@ -48,7 +53,7 @@ function toggleDetailsPopUp(selectedUser) {
   }
 }
 
-onBeforeMount(() =>{
+onBeforeMount(() => {
   getUsers();
   selectedUserStore.popUpToggleFunction = toggleDetailsPopUp
 })
