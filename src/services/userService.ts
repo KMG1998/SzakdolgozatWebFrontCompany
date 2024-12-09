@@ -19,6 +19,9 @@ class UserService {
         cookies.remove('authenticated')
         cookies.remove('token')
       }
+      if (error.code === 'ERR_NETWORK' || error.code === 'ERR_CONNECTION_REFUSED') {
+        toast('Sikertelen csatlakozás', ToastConfigs.errorToastConfig);
+      }
       return error;
     })
   }
@@ -68,10 +71,13 @@ class UserService {
     return newUserId
   }
 
-  async getCompanyUsers() {
+  async getCompanyUsers(emailSearchValue?:string|undefined) {
     try {
+      console.log(emailSearchValue)
       const response = await axiosClient
-        .get(API_URL + 'getAllByCompany');
+        .get(API_URL + 'getAllByCompany',{params:{
+          emailSearch:emailSearchValue
+          }});
       if (response.data) {
         const users = Array<User>();
         response.data.map(function (value) {

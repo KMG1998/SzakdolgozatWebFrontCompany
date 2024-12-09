@@ -1,5 +1,5 @@
 <template>
-  <div class="relative z-0 h-[100vh] gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 mr-7">
+  <div class="relative z-0 h-[100vh] min-h-[800px] gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 mr-7">
     <div
       class="bg-white h-full bg-opacity-80 flex flex-col items-center text-xl text-black whitespace-nowrap w-full pt-6 pb-12 px-4 max-md:mt-6">
       <img

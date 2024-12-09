@@ -20,7 +20,7 @@
           class="bg-white bg-opacity-80 flex flex-col items-stretch w-full h-min mt-6 pt-4 pb-12 rounded-3xl max-md:mt-10"
         >
           <div class="text-black text-xl ml-4 self-start max-md:ml-2.5">
-            {{ $t("mainPage.quickActions") }}
+            {{ $t("mainPage.createActions") }}
           </div>
           <div class="bg-black shrink-0 h-0.5 mt-3 max-md:max-w-full"></div>
           <div class="self-center w-[100%] max-w-full mt-3.5 pl-2 pr-2">
@@ -33,7 +33,7 @@
                   @click='toggleUserPopUp'
                 />
                 <div class="text-black text-xl whitespace-nowrap mt-6">
-                  <p>új felhasználó</p>
+                  <p>új alkalmazott</p>
                 </div>
               </div>
               <div class="flex grow flex-col items-stretch max-md:mt-10">

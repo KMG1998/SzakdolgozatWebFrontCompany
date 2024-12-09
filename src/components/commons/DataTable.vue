@@ -41,7 +41,6 @@
 <script setup lang="ts">
 import {SemipolarSpinner} from "epic-spinners";
 import {useI18n} from "vue-i18n";
-import {string} from "yup";
 
 const {t} = useI18n()
 
@@ -60,8 +59,6 @@ function printData(data: any, fieldKey:string): string {
     return ''
   }
   if(props.fieldTransformers != undefined && Object.keys(props.fieldTransformers).includes(fieldKey)){
-    console.log('in transform clause')
-    console.log(data)
     return props.fieldTransformers[fieldKey](data)
   }
   switch (typeof data) {

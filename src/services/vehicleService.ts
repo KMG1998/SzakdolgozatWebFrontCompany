@@ -17,6 +17,9 @@ class VehicleService {
         cookies.remove('authenticated')
         cookies.remove('token')
       }
+      if (error.code === 'ERR_NETWORK' || error.code === 'ERR_CONNECTION_REFUSED') {
+        toast('Sikertelen csatlakozás', ToastConfigs.errorToastConfig);
+      }
       return error;
     })
   }
@@ -63,9 +66,11 @@ class VehicleService {
     return success
   }
 
-  async getAllVehicles(): Promise<Vehicle[] | undefined> {
+  async getAllVehicles(plateNumSearch?:string|undefined): Promise<Vehicle[] | undefined> {
     let allVehicles = undefined
-    await axiosClient.get(API_URL + 'vehiclesForCompany',)
+    await axiosClient.get(API_URL + 'vehiclesForCompany',{params:{
+        plateNumSearch:plateNumSearch
+      }})
       .then(response => {
         if (response.data) {
           const vehicles = Array<Vehicle>();

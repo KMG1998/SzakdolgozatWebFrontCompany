@@ -9,15 +9,14 @@ const i18n = createI18n({
       true:'Igen',
       false:'Nem',
       mainPage: {
-        quickActions: 'gyorsműveletek',
-        companyData: 'cég adatai',
+        createActions: 'Létrehozás',
+        companyData: 'Cég adatai',
         ownData:'Személyes adatok'
       },
       sideMenu: {
-        usersPage: 'Felhasználók',
+        usersPage: 'Alkalmazottak',
         vehiclesPage: 'Járművek',
         reservationsPage: 'Foglalások',
-        companiesPage: 'Cégek',
       },
       tableHeaders: {
         userTable: {
@@ -36,13 +35,6 @@ const i18n = createI18n({
           available: 'Elérhető',
           insuranceId: 'Biztosítás azonosító',
           plateNumber: 'Rendszám',
-        },
-        companiesTable: {
-          id: 'Azonosító',
-          companyName: 'Név',
-          officeAddress: 'Telephely cím',
-          officeEmail: 'E-mail',
-          officeTel: 'Telefonszám'
         },
         orderTable:{
           id: 'Azonosító',
@@ -73,7 +65,8 @@ const i18n = createI18n({
         pleaseLogIn:'Kérjük,jelentkezzen be',
         logOutFail:'Sikertelen kijelentkezés',
         passwordResetSuccess:'Sikeres kérvényezés',
-        passwordResetFail:'Sikertelen kérvényezés'
+        passwordResetFail:'Sikertelen kérvényezés',
+        unknownError:'Ismeretlen hiba'
       },
       inputValidation:{
         requiredField:'Kötelező mező',
@@ -82,7 +75,7 @@ const i18n = createI18n({
         minValue:'A minimum érték {minValue}',
         exactLength:'Az értéknek pontosan {length} karakter hosszúnak kell lennie',
         phoneFormat:'A megfelelő formátum: +xx xx xxx xxxx',
-        minDate:'A dátumnak a mai napon után kell lennie',
+        minDate:'A dátumnak a mai nap után kell lennie',
         passwordMismatch:'Az új jelszó és az ismétlés nem egyezik!'
       }
     },

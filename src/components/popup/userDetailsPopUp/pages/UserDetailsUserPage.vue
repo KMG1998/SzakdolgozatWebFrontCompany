@@ -7,7 +7,7 @@
       >
         <div class="flex flex-col grow items-stretch max-md:mt-10">
           <div class="flex flex-row justify-center items-center">
-            <p class="text-xl font-bold text-black w-full">felhasználó adatai</p>
+            <p class="text-xl font-bold text-black w-full">alkalmazott adatai</p>
             <div
               class="w-[40px] h-[40px] absolute right-4 z-10 bg-white border-solid rounded-full border-black border-2 p-[5px] cursor-pointer"
               v-if="!userDataStore.selectedUser.disabled && !userDataStore.editStarted && !userDataStore.deleteStarted">
@@ -26,7 +26,7 @@
           <div class="flex flex-col items-stretch mt-3 max-md:pl-5">
             <InputField
               field-id="email"
-              label="felhasználó e-mail"
+              label="alkalmazott e-mail"
               type="text"
               v-model=email
               v-bind=emailProps
@@ -36,7 +36,7 @@
             />
             <InputField
               field-id="name"
-              label="felhasználó neve"
+              label="alkalmazott neve"
               type="text"
               v-model=nameOfUser
               v-bind=nameOfUserProps
@@ -76,7 +76,7 @@
     </div>
   </form>
   <div v-else class="flex flex-col justify-around items-center px-2">
-    <p class="text-xl font-bold text-black w-full">Biztos törli a felhasználót?</p>
+    <p class="text-xl font-bold text-black w-full">Biztos törli az alkalmazottat?</p>
     <div class="flex flex-row w-full justify-around gap-2">
       <button type="button"
               @click="deleteUser"

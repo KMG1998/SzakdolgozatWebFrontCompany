@@ -7,11 +7,11 @@
             class="flex flex-col items-stretch w-[100%] min-w-[450px] max-md:ml-0 max-md:w-full"
           >
             <div class="flex flex-col grow items-stretch max-md:mt-10">
-              <p class="text-xl text-black">új felhasználó adatai</p>
+              <p class="text-xl text-black">új alkalmazott adatai</p>
               <div class="flex flex-col items-stretch mt-9 max-md:pl-5">
                 <InputField
                   field-id="email"
-                  label="felhasználó e-mail"
+                  label="alkalmazott e-mail"
                   type="text"
                   v-model=email
                   v-bind=emailProps
@@ -21,7 +21,7 @@
                 />
                 <InputField
                   field-id="name"
-                  label="felhasználó neve"
+                  label="alkalmazott neve"
                   type="text"
                   v-model=nameOfUser
                   v-bind=nameOfUserProps

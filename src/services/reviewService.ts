@@ -16,11 +16,9 @@ class ReviewService{
       if (error.status === 401) {
         cookies.remove('authenticated')
         cookies.remove('token')
-        return
       }
       if (error.code === 'ERR_NETWORK' || error.code === 'ERR_CONNECTION_REFUSED') {
         toast('Sikertelen csatlakozás', ToastConfigs.errorToastConfig);
-        return
       }
       return error;
     })
