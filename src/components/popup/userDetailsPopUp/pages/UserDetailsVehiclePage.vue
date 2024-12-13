@@ -13,41 +13,10 @@
                @click="selectedUserStore.unlinkStarted = true">
         </div>
         <div class="flex flex-col items-center mt-3">
-          <label
-            for="seats"
-            class=" text-xl text-center text-black whitespace-nowrap"
-          >
-            ülések száma
-          </label>
-          <input id="seats"
-                 class="shadow-sm bg-white self-stretch flex shrink-0 h-12  w-full flex-col mt-3 px-3 rounded-3xl border-2 border-solid border-black text-center"
-                 type="number"
-                 placeholder="ülések száma"
-                 :value="selectedUserStore.userVehicle.seats">
-          <label for="plateNum" class="mt-6 text-xl text-center text-black">
-            rendszám
-          </label>
-          <input id="plateNum"
-                 class="shadow-sm bg-white self-stretch flex shrink-0 h-12  w-full flex-col mt-3 rounded-3xl border-2 border-solid border-black text-center"
-                 type="text"
-                 placeholder="rendszám"
-                 :value="selectedUserStore.userVehicle.plateNumber">
-          <label for="carType" class="mt-6 text-xl text-center text-black">
-            típus
-          </label>
-          <input id="carType"
-                 class="shadow-sm bg-white self-stretch flex shrink-0 h-12  w-full flex-col mt-3 rounded-3xl border-2 border-solid border-black text-center"
-                 type="text"
-                 placeholder="jármű típus"
-                 :value="selectedUserStore.userVehicle.type">
-          <label for="airCond" class="mt-6 text-xl text-center text-black">
-            szín
-          </label>
-          <input id="carColor"
-                 class="shadow-sm bg-white self-stretch flex shrink-0 h-12  w-full flex-col mt-3 rounded-3xl border-2 border-solid border-black text-center"
-                 type="text"
-                 placeholder="jármű színe"
-                 :value="selectedUserStore.userVehicle.color">
+          <DataWithLabel label="ülések száma" :data="selectedUserStore.userVehicle.seats"/>
+          <DataWithLabel label="rendszám" :data="selectedUserStore.userVehicle.plateNumber"/>
+          <DataWithLabel label="jármű típus" :data="selectedUserStore.userVehicle.type"/>
+          <DataWithLabel label="jármű színe" :data="selectedUserStore.userVehicle.color"/>
         </div>
       </div>
     </div>
@@ -83,6 +52,7 @@ import VehicleService from "@/services/vehicleService";
 import {toast} from "vue3-toastify";
 import {useI18n} from "vue-i18n";
 import ToastConfigs from "@/utils/toastConfigs";
+import DataWithLabel from "@/components/commons/DataWithLabel.vue";
 
 const nonLinkedVehicles = ref<Array<Vehicle>>()
 const selectedUserStore = useSelectedUserStore()
