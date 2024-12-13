@@ -51,6 +51,7 @@ function toggleDetailsPopUp(selectedUser) {
   selectedUserStore.selectedUser = selectedUser
   selectedUserStore.popUpVisible = !selectedUserStore.popUpVisible
   if (!selectedUserStore.popUpVisible) {
+    searchValue.value = undefined
     getAllCompanyUsers()
   }
 }

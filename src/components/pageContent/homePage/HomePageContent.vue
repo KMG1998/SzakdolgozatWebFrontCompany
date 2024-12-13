@@ -2,9 +2,6 @@
   <PopUp :visibility-variable="isUserPopupVisible" @toggle="toggleUserPopUp">
     <CreateUserPopUp :toggle-function="toggleUserPopUp"/>
   </PopUp>
-  <PopUp :visibility-variable="isCompanyPopupVisible" @toggle="toggleCompanyPopUp">
-    <CreateCompanyPopUp/>
-  </PopUp>
   <PopUp :visibility-variable="isVehiclePopupVisible" @toggle="toggleVehiclePopUp">
     <CreateVehiclePopup/>
   </PopUp>
@@ -81,7 +78,7 @@
             <button type="button"
                     @click="togglePasswordPopUp"
                     class="justify-center items-center px-16 py-2 mt-3 max-w-full text-xl text-black rounded-3xl border-2 border-black border-solid"
-            >Jelszó csere
+            >Jelszó megváltoztatása
             </button>
           </div>
         </div>
@@ -92,7 +89,6 @@
 
 <script setup lang="ts">
 import CreateUserPopUp from "@/components/popup/CreateUserPopUp.vue";
-import CreateCompanyPopUp from "@/components/popup/CreateCompanyPopUp.vue";
 import CreateVehiclePopup from "@/components/popup/CreateVehiclePopup.vue";
 import PopUp from "@/components/popup/PopUp.vue";
 import DataWithLabel from "@/components/commons/DataWithLabel.vue";
@@ -100,14 +96,15 @@ import * as Company from "@/types/Company";
 import {ref} from "vue";
 import PasswordChangePopUp from "@/components/popup/passwordChange/PasswordChangePopUp.vue";
 
+const isUserPopupVisible = ref(false)
+const isVehiclePopupVisible = ref(false)
+const isPasswordPopupVisible = ref(false)
+const companyData: Company = JSON.parse(sessionStorage.getItem('companyData')) as Company
+const userName = JSON.parse(sessionStorage.getItem('userData')).name
+const userEmail = JSON.parse(sessionStorage.getItem('userData')).email
 
 function toggleUserPopUp() {
-  console.log(isUserPopupVisible.value)
   isUserPopupVisible.value = !isUserPopupVisible.value
-}
-
-function toggleCompanyPopUp() {
-  isCompanyPopupVisible.value = !isCompanyPopupVisible.value
 }
 
 function toggleVehiclePopUp() {
@@ -117,14 +114,5 @@ function toggleVehiclePopUp() {
 function togglePasswordPopUp() {
   isPasswordPopupVisible.value = !isPasswordPopupVisible.value
 }
-
-
-const isUserPopupVisible = ref(false)
-const isCompanyPopupVisible = ref(false)
-const isVehiclePopupVisible = ref(false)
-const isPasswordPopupVisible = ref(false)
-const companyData: Company = JSON.parse(sessionStorage.getItem('companyData')) as Company
-const userName = JSON.parse(sessionStorage.getItem('userData')).name
-const userEmail = JSON.parse(sessionStorage.getItem('userData')).email
 
 </script>

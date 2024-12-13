@@ -66,6 +66,7 @@ function toggleDetailsPopUp(selectedOrder) {
   selectedOrderStore.selectedOrder = selectedOrder
   selectedOrderStore.popUpVisible = !selectedOrderStore.popUpVisible
   if (!selectedOrderStore.popUpVisible) {
+    searchValue.value = undefined
     getOrders()
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="fixed flex flex-col items-center py-4 bg-white rounded-3xl opacity-100 z-50">
     <form class="flex flex-col min-w-[500px] p-2" @submit.prevent>
-      <p class="text-xl text-black">Jelszó csere</p>
+      <p class="text-xl text-black">Jelszó megváltoztatása</p>
       <InputField
         field-id="currentPass"
         label="Jelenlegi jelszó"

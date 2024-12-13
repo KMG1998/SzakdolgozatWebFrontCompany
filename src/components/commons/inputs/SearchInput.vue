@@ -5,6 +5,7 @@
            :placeholder="props.placeholder"
            :value="props.modelValue"
            @input="$emit('update:modelValue',$event.target.value)"
+           @keyup.enter="props.searchFunction()"
            class="shadow-sm bg-white self-stretch flex shrink-0 h-12  w-full flex-col mt-3 rounded-3xl border-2 border-solid border-black text-center">
     <img
       loading="lazy"

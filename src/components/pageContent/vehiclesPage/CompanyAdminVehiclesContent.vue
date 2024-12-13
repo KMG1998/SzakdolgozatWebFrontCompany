@@ -55,6 +55,7 @@ function toggleDetailsPopUp(selectedVehicle) {
   selectedVehicleStore.selectedVehicle = selectedVehicle
   selectedVehicleStore.popUpVisible = !selectedVehicleStore.popUpVisible
   if (!selectedVehicleStore.popUpVisible) {
+    searchValue.value = undefined
     getVehicles()
   }
 }

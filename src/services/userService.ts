@@ -106,23 +106,6 @@ class UserService {
     }
   }
 
-  async getUser(userId: string): Promise<User | null> {
-    let ret = null
-    await axiosClient.post(API_URL + 'getUser', {userId: userId}).then(response => {
-        if (response.data) {
-          ret = response.data as User
-        }
-      }
-    ).catch(err => {
-      if (err instanceof AxiosError && err.response) {
-        if (err.response.status === 400) {
-          toast(err.response.statusText, ToastConfigs.errorToastConfig);
-        }
-      }
-    })
-    return ret
-  }
-
   async updateUser(user: User): Promise<User | undefined> {
     let updatedUser = undefined
     await axiosClient.post(API_URL + 'updateUser', {userData: JSON.stringify(user)}).then(
