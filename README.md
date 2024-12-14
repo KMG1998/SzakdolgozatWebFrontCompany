@@ -6,4 +6,4 @@
 
 -dependencia install: npm install
 
--futtatás: vite dev parancs
+-futtatás: vite dev
